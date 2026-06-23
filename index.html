@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structured Sonography Report</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Structured sonography report workspace">
+        <aside class="side-panel">
+          <div class="brand">
+            <div class="brand-mark">US</div>
+            <div>
+              <h1>گزارش ساختاری سونوگرافی</h1>
+              <p>Persian workflow with English medical terms</p>
+            </div>
+          </div>
+
+          <div class="field-stack">
+            <label for="examType">نوع گزارش</label>
+            <select id="examType">
+              <option value="abdomen">Abdominopelvic US</option>
+              <option value="thyroid">Thyroid US</option>
+              <option value="breast">Breast US</option>
+              <option value="obgyn">Obstetric / Gynecologic US</option>
+              <option value="renal">Renal & Urinary Tract US</option>
+            </select>
+          </div>
+
+          <div class="field-grid">
+            <div class="field-stack">
+              <label for="patientName">نام بیمار</label>
+              <input id="patientName" type="text" placeholder="مثلا: مریم احمدی" />
+            </div>
+            <div class="field-stack">
+              <label for="patientAge">سن</label>
+              <input id="patientAge" type="text" placeholder="مثلا: ۳۴" />
+            </div>
+          </div>
+
+          <div class="field-stack">
+            <label for="clinicalData">Clinical data</label>
+            <textarea id="clinicalData" rows="3" placeholder="مثلا: RUQ pain, follow-up fatty liver"></textarea>
+          </div>
+
+          <div class="quick-tools">
+            <button class="ghost" type="button" data-action="normal">Normal template</button>
+            <button class="ghost" type="button" data-action="clear">Clear findings</button>
+          </div>
+
+          <div class="term-panel">
+            <div class="panel-title">واژگان سریع</div>
+            <div id="termChips" class="term-chips"></div>
+          </div>
+        </aside>
+
+        <section class="editor-panel">
+          <div class="toolbar">
+            <div class="toolbar-group" role="group" aria-label="Dictation controls">
+              <button id="micBtn" class="icon-btn primary" type="button" title="شروع دیکته">
+                <span class="icon">●</span>
+                <span>Dictate fa-IR</span>
+              </button>
+              <button id="formatBtn" class="icon-btn" type="button" title="ساخت گزارش">
+                <span class="icon">↳</span>
+                <span>Structure</span>
+              </button>
+              <button id="polishBtn" class="icon-btn" type="button" title="تبدیل به لحن رادیولوژی">
+                <span class="icon">✦</span>
+                <span>Radiology voice</span>
+              </button>
+            </div>
+            <div class="toolbar-group" role="group" aria-label="Output controls">
+              <button id="copyBtn" class="icon-btn" type="button" title="کپی گزارش">
+                <span class="icon">□</span>
+                <span>Copy</span>
+              </button>
+              <button id="downloadBtn" class="icon-btn" type="button" title="دانلود گزارش">
+                <span class="icon">↓</span>
+                <span>TXT</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="columns">
+            <section class="dictation-card">
+              <div class="section-header">
+                <h2>ورودی صوتی / متن آزاد</h2>
+                <span id="speechStatus" class="status">آماده</span>
+              </div>
+              <textarea id="rawInput" class="large-textarea" placeholder="متن دیکته‌شده یا یافته‌های آزاد را اینجا وارد کنید. مثال: کبد سایز نرمال اکوی پارانشیم افزایش یافته mild fatty liver بدون focal lesion ..."></textarea>
+            </section>
+
+            <section class="report-card">
+              <div class="section-header">
+                <h2>Structured Report</h2>
+                <span id="qualityBadge" class="status accent">Draft</span>
+              </div>
+              <textarea id="reportOutput" class="large-textarea report" spellcheck="false"></textarea>
+            </section>
+          </div>
+
+          <section class="smart-panel">
+            <div class="section-header compact">
+              <h2>یافته‌های قابل تنظیم</h2>
+              <button id="addFindingBtn" class="ghost small" type="button">Add finding</button>
+            </div>
+            <div id="findingRows" class="finding-rows"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
